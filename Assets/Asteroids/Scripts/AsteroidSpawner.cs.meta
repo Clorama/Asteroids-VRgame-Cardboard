@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: 88aa788fa6f5f49e0bee159bfafac988
-timeCreated: 1477718726
+timeCreated: 1478162720
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - Asteroid: {fileID: 145400, guid: bb2f97962620144f6998c6a117d12a1c, type: 2}
+  - Asteroid: {fileID: 1000013651571688, guid: 322d7022a76a94b41b956e83e7a7c0b6, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

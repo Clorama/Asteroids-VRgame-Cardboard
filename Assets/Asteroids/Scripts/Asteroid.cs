@@ -6,11 +6,16 @@ using System.Collections;
 public class Asteroid : MonoBehaviour, IGvrGazeResponder {
 
 	private Player player;
+	public GameObject Explosion;
+	public GameObject PlayerExplosion;
 
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find("GvrMain").GetComponent<Player>();
 	     Debug.Log ("got player component"); 
+
+
+
 			
 		//face a random direction
 		float y = Random.Range(0f,360f);
@@ -36,8 +41,13 @@ public class Asteroid : MonoBehaviour, IGvrGazeResponder {
 		}
 	}
 
+
+
 	void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.tag == "Projectile") {
+
+
+
 			Destroy (collision.gameObject);
 			if (transform.localScale.x >= 18f) {
 				for (int i = 0; i < 2; i++) {
@@ -45,8 +55,14 @@ public class Asteroid : MonoBehaviour, IGvrGazeResponder {
 					NewAst.transform.localScale -= new Vector3(12f,12f,12f);
 				}
 			}
+
+			Instantiate (Explosion, new Vector3(transform.position.x + transform.position.y,transform.position.z), transform.rotation);
+			Instantiate(PlayerExplosion, new Vector3(transform.position.x + transform.position.y,transform.position.z), transform.rotation);
+			Debug.Log ("explosion!");
+
 			Destroy (gameObject);
-			Debug.Log ("Not Destroyed)");
+
+			Debug.Log ("Destroyed)");
 		}
 	}
 
@@ -61,6 +77,8 @@ public class Asteroid : MonoBehaviour, IGvrGazeResponder {
 		Debug.Log ("gaze exited");
 
 	}
+
+
 
 	public void OnGazeTrigger(){
 		player.Shoot();
