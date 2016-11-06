@@ -1,27 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 [RequireComponent (typeof(Collider))]
+
 
 public class Asteroid : MonoBehaviour, IGvrGazeResponder {
 
 	private Player player;
 	public GameObject Explosion;
 	public GameObject PlayerExplosion;
+	public int enemyscoreValue = 1;
+
+
+
 
 	// Use this for initialization
 	void Start () {
+
+
+
 		player = GameObject.Find("GvrMain").GetComponent<Player>();
 	     Debug.Log ("got player component"); 
 
 
 
-			
 		//face a random direction
 		float y = Random.Range(0f,360f);
 		transform.rotation = Quaternion.Euler (0f, y, 0f);
 	
 	}
+
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -46,26 +56,33 @@ public class Asteroid : MonoBehaviour, IGvrGazeResponder {
 	void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.tag == "Projectile") {
 
-
-
 			Destroy (collision.gameObject);
+
+	
+			
+
 			if (transform.localScale.x >= 18f) {
 				for (int i = 0; i < 2; i++) {
-					GameObject NewAst = (GameObject)Instantiate (gameObject, new Vector3(transform.position.x + (float)i,transform.position.y,transform.position.z), transform.rotation);
+				GameObject NewAst = (GameObject)Instantiate (gameObject, new Vector3(transform.position.x + (float)i,transform.position.y,transform.position.z), transform.rotation);
 					NewAst.transform.localScale -= new Vector3(12f,12f,12f);
 				}
 			}
 
-			Instantiate (Explosion, new Vector3(transform.position.x + transform.position.y,transform.position.z), transform.rotation);
+			Instantiate (Explosion, transform.position, transform.rotation);
+
+				//new Vector3(transform.position.x + transform.position.y,transform.position.z), transform.rotation);
 			Instantiate(PlayerExplosion, new Vector3(transform.position.x + transform.position.y,transform.position.z), transform.rotation);
-			Debug.Log ("explosion!");
+				Debug.Log ("explosion!");
+
+			ScoreManagerEnemy.enemyscore += enemyscoreValue;
 
 			Destroy (gameObject);
-
-			Debug.Log ("Destroyed)");
+				Debug.Log ("Destroyed)");
 		}
 	}
 
+
+	
 	#region IGvrGazeResponder implementation
 
 	public void OnGazeEnter(){
@@ -77,9 +94,7 @@ public class Asteroid : MonoBehaviour, IGvrGazeResponder {
 		Debug.Log ("gaze exited");
 
 	}
-
-
-
+	
 	public void OnGazeTrigger(){
 		player.Shoot();
 		Debug.Log ("Pulled the trigger)");
@@ -87,4 +102,7 @@ public class Asteroid : MonoBehaviour, IGvrGazeResponder {
 
 	#endregion
 
-}
+
+
+}	
+

@@ -1,9 +1,0 @@
-<linker>
-	<assembly fullname="Assembly-CSharp">
-		<type fullname="Asteroid">
-			<method name="OnGazeEnter"/>
-			<method name="OnGazeExit"/>
-			<method name="OnGazeTrigger"/>
-		</type>
-	</assembly>
-</linker>

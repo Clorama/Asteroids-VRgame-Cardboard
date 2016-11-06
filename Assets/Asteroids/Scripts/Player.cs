@@ -1,15 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+
+[RequireComponent(typeof(AudioSource))]
+
 
 public class Player : MonoBehaviour {
 
 	private Transform HeadTransform;
 	public GameObject Projectile;
 
+	//public Text countText;
+	//private int count;
+
+
+
 	// Use this for initialization
 	void Start () {
 
+		//count = 10;
+		//SetCountText ();
+
 		HeadTransform = transform.FindChild ("Head");
+	
+
 	
 	}
 	
@@ -31,10 +45,16 @@ public class Player : MonoBehaviour {
 		}else if (transform.position.z <= -148f) {
 			transform.position = new Vector3(transform.position.x, 0f,148f);
 	}
+
+
 }
 	void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.tag == "Asteroid") {
 			Destroy (collision.gameObject);
+
+		//	count = count - 1;
+		//	SetCountText ();
+
 		}
 	}
 
@@ -44,6 +64,18 @@ public class Player : MonoBehaviour {
 		Ray ray = new Ray (HeadTransform.position, forward);
 		Instantiate(Projectile, ray.GetPoint(6), Quaternion.LookRotation (forward));
 		Debug.Log("Shooting");
+
+		AudioSource audio = GetComponent<AudioSource>();
+		audio.Play (); 
+	
 	}
+		
+
+	//void SetCountText() {
+	//	countText.text = "Count: " + count.ToString ();
+	//}
+
+
+
 
 }

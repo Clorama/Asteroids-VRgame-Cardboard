@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position += transform.forward * Time.deltaTime * 50.0f;
+		transform.position += transform.forward * Time.deltaTime * 80.0f;
 
 		if (transform.position.x >= 148f) {
 			transform.position = new Vector3(-148f, 0f,transform.position.z);

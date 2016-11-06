@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 28eac8bcec5b6479e9f76c1cc10d71e6
+timeCreated: 1478421792
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - HouseExplosion: {fileID: 100004, guid: 2645faa1102214fefad46a5dabb0903f, type: 2}
+  - countDown: {fileID: 114000010433537948, guid: 43a931fb4578b4fed8e46a4a95991b20,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

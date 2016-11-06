@@ -7,7 +7,8 @@ public class AsteroidSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		for (int i = 0; i < 14; i++) {
+
+		for (int i = 0; i < 10; i++) {
 			GameObject asteroid = (GameObject)Instantiate (Asteroid, new Vector3 (Random.Range (-140f, 140f), 0f, Random.Range (-140f, 140f)), Quaternion.identity);
 			if (asteroid.transform.position.x < 30f && asteroid.transform.position.x > 0f) {
 				asteroid.transform.position = new Vector3 (Random.Range (30f, 140f), 0f, asteroid.transform.position.z);
